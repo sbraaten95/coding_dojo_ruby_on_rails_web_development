@@ -1,0 +1,5 @@
+belongs_to :comment_help, polymorphic: true
+has_many :comments, as: :comment_duty
+t.string :comment
+t.integer :comment_duty_id
+t.string :comment_duty_type
