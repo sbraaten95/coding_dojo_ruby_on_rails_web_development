@@ -1,0 +1,10 @@
+<h1>New User</h1>
+<form action="/users/" method="post">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+First name: <input type="text" name="user[first]">
+Last name: <input type="text" name="user[last]">
+Email: <input type="text" name="user[email]">
+Password: <input type="text" name="user[password]">
+<input type="submit" value="Create!">
+</form>
+<a href="/"><button>Back</button></a>

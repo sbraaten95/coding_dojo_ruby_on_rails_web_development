@@ -1,0 +1,47 @@
+<h1>Listing products</h1>
+<table>
+	<thead>
+		<tr>
+			<th>
+				Name
+			</th>
+			<th>
+				Description
+			</th>
+			<th>
+				Price
+			</th>
+			<th>
+				Category
+			</th>
+			<th>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @products.each do |p| %>
+		<tr>
+			<td>
+				<%= p.name %>
+			</td>
+			<td>
+				<%= p.description %>
+			</td>
+			<td>
+				<%= p.price %>
+			</td>
+			<td>
+				<% if p.category %>
+				<%= p.category.name %>
+				<% end %>
+			</td>
+			<td>
+				<%= link_to 'Show', product_path(p) %>
+				<%= link_to 'Edit', edit_product_path(p) %>
+				<%= link_to 'Destroy', product_path(p), method: :delete %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+	<%= link_to 'New Product', new_product_path %> 
+</table>

@@ -1,0 +1,11 @@
+<h1>Edit User</h1>
+<form action="/users/<%=@user.id%>" method="post">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+First name: <input type="text" name="user[first]" value=<%=@user.first_name%>>
+Last name: <input type="text" name="user[last]" value=<%=@user.last_name%>>
+Email: <input type="text" name="user[email]" value=<%=@user.email_address%>>
+Password: <input type="text" name="user[password]">
+<input type="submit" value="Edit!">
+</form>
+<a href="users/<%=@user.id%>"><button>Show</button></a>
+<a href="/"><button>Back</button></a>
