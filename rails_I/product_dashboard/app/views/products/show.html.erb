@@ -4,4 +4,9 @@
 <% if @product.category %>
 <p><%= @product.category.name %></p>
 <% end %>
+<h3>Comments</h3>
+<%= render @product.comments %>
+
+<h3>Add a comment</h3>
+<%= render 'comments/form' %>
 <%= link_to 'Back', products_path %>
