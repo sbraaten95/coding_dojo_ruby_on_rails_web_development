@@ -1,11 +1,13 @@
 <%= @user.name %>
-<% @user.secrets.each do |secret| %>
+<% Secret.where(user:@user).each do |secret| %>
 <%= secret.content %>
+<a href="/secrets/<%=secret.id%>" data-method="delete"><button>Delete</button></a>
 <% end %>
 <%= link_to('Edit Profile', edit_user_path) %>
 
-<form action="/secret" method="post">
+<form action="/secrets" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 	<label for="secret">New Secret</label>
 	<input type="text" name="secret">
-	<input type="submit" value="Add">
+	<input type="submit" value="Create Secret">
 </form>
