@@ -103,8 +103,8 @@ def create_user name='kobe', email='kobe@lakers.com', password='password', passw
 end
 def log_in user, password='password'
   visit '/sessions/new'
-  fill_in 'Email', with: user.email
-  fill_in 'Password', with: password
+  fill_in 'email', with: user.email
+  fill_in 'password', with: password
   click_button 'Log In'
 end
 RSpec.configure do |config|

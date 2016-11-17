@@ -5,8 +5,8 @@ RSpec.describe 'logging in' do
   end
   it 'prompts for email and password' do
     visit '/sessions/new'
-    expect(page).to have_field('Email')
-    expect(page).to have_field('Password')
+    expect(page).to have_field('email')
+    expect(page).to have_field('password')
   end
   it 'logs in user if email/password combination is valid' do
     log_in @user
