@@ -1,1 +1,11 @@
 <%= @user.name %>
+<% @user.secrets.each do |secret| %>
+<%= secret.content %>
+<% end %>
+<%= link_to('Edit Profile', edit_user_path) %>
+
+<form action="/secret" method="post">
+	<label for="secret">New Secret</label>
+	<input type="text" name="secret">
+	<input type="submit" value="Add">
+</form>
