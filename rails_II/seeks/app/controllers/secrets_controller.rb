@@ -6,7 +6,6 @@ class SecretsController < ApplicationController
 	end
 	def create
 		@user = User.find(session[:user_id])
-		puts params[:secret]
 		Secret.create(content:params[:secret], user:@user)
 
 		redirect_to @user

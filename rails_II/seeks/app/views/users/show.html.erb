@@ -1,6 +1,7 @@
 <%= @user.name %>
 <% Secret.where(user:@user).each do |secret| %>
 <%= secret.content %>
+<%= secret.likes.count %> likes
 <a href="/secrets/<%=secret.id%>" data-method="delete"><button>Delete</button></a>
 <% end %>
 <%= link_to('Edit Profile', edit_user_path) %>
