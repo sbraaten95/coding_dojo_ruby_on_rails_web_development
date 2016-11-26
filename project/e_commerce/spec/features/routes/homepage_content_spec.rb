@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'homepage' do
 	before do
-		visit '/'
+		visit root_path
 	end
 	it 'loads the welcome page when provided an empty route' do
 		expect(page).to have_text('Welcome!')
