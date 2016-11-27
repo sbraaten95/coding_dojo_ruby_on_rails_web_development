@@ -1,0 +1,17 @@
+<p> <%= link_to('Back to Products', root_path) %> </p>
+<% if session[:cart] != nil %>
+<p> <%= link_to('Check Out', check_out_path) %> </p>
+<% end %>
+<ul style="list-style: none;">
+<% if session[:cart] != nil %>
+<% session[:cart].each do |p| %>
+<li>
+<p> <%= p['name'] %> </p>
+<p> <%= p['desc'] %> </p>
+<p> <%= p['price'] %> </p>
+<p> <%= User.find(p['user_id']).name %> </p>
+<p> <%= image_tag(p['image'], height:150, width:150) %> </p>
+</li>
+<% end %>
+<% end %>
+</ul>

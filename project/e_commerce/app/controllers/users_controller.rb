@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 	  	@user.destroy
 	  	reset_session
 
-	  	redirect_to '/sessions/new'
+	  	redirect_to root_path
 	end
 
 	private

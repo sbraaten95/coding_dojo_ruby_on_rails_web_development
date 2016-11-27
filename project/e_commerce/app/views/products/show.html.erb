@@ -1,0 +1,7 @@
+<p> <%= @product.name %> </p>
+<p> <%= @product.desc %> </p>
+<p> <%= @product.price %> </p>
+<p> <%= @product.user.name %> </p>
+<p> <%= image_tag(@product.photo, height:150, width:150) %> </p>
+<p> <%= link_to('Add to Cart', add_to_cart_path(@product.id)) %> </p>
+<p> <%= link_to('Back to Products', root_path) %> </p>

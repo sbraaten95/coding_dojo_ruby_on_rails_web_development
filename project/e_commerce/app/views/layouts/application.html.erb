@@ -15,11 +15,15 @@
 		<% end %>
 	<% end %>
 	<% if current_user %>
-		<form action='/sessions' method='post'>
+		<!-- <form action='/sessions' method='post'>
 			<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
 			<input type='hidden' name='_method' value='delete'>
 			<input type='submit' value='Log Out'>
-		</form>
+		</form> -->
+		<%= form_tag(logging_out_path, method: :delete) do -%>
+			<%= csrf_meta_tag %>
+			<p> <%= submit_tag 'Log Out' %> </p>
+		<% end -%>
 	<% end %>
     <%= yield %>
   </body>

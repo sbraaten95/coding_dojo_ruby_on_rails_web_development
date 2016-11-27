@@ -1,8 +1,17 @@
 <h1>Log In</h1>
-<form action="/login" method="post">
+<!-- <form action="/login" method="post">
 	<label for="email">Email</label>
 	<input type="email" name="email">
 	<label for="password">Password</label>
 	<input type="password" name="password">
 	<input type="submit" value="Log In">
-</form>
+</form> -->
+
+<%= form_tag(confirm_logging_in_path) do -%>
+	<%= csrf_meta_tag %>
+	<p> <%= label_tag 'email', 'Email' %> </p>
+	<p> <%= email_field_tag 'email', 'capitalist@market.biz' %> </p>
+	<p> <%= label_tag 'password', 'Password' %> </p>
+	<p> <%= password_field_tag 'password', 'freemarketrules!' %> </p>
+	<p> <%= submit_tag 'Log In' %> </p>
+<% end -%>
