@@ -33,7 +33,7 @@ class ControlsController < ApplicationController
 				session[:cart] = [@product]
 			end
 			flash[:errors] = ["#{@product.name} added to your cart!"]
-			redirect_to :back
+			redirect_to root_path
 		else
 			flash[:errors] = ['To add items to your cart, log in first!']
 			session[:prev_path] = product_path(params[:format])
@@ -46,9 +46,10 @@ class ControlsController < ApplicationController
 	def check_out_cart
 		session[:cart].each do |item|
 			product = Product.find(item['id'])
-			# current_user.update(price:(current_user.price - product.price))
+			# current_user.update(price:(current_user.total - product.price))
 			product.update(user:current_user)
 		end
+		session[:cart] = nil
 		redirect_to inventory_path
 	end
 	def show_inventory

@@ -24,5 +24,13 @@ class ProductsController < ApplicationController
 	def update
 	end
 	def destroy
+		@product = Product.find(params[:id])
+		@product.destroy if @product.user == current_user
+		redirect_to root_path
+	end
+	def change_picture
+		@product = Product.find(params[:product_id])
+		@product.update(photo: params[:photo])
+		redirect_to :back
 	end
 end

@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 	get '/checkout', to: 'controls#check_out_cart', as: 'check_out'
 
 	get '/inventory', to: 'controls#show_inventory', as: 'inventory'
+
+	patch '/changepic', to: 'products#change_picture', as: 'change_picture'
 end

@@ -1,7 +1,36 @@
 <p> <%= @product.name %> </p>
 <p> <%= @product.desc %> </p>
-<p> <%= @product.price %> </p>
+<p> $<%= number_with_precision(@product.price / 100, :precision => 2, :delimiter => ',') %> </p>
 <p> <%= @product.user.name %> </p>
-<p> <%= image_tag(@product.photo, height:150, width:150) %> </p>
+<% if @product.user == current_user %>
+	<p> <%= image_tag(@product.photo, height:150, width:150) %> </p>
+	<p> <%= form_tag change_picture_path, multipart: true, method: :patch do %>
+			<%= file_field_tag 'photo' %>
+			<%= hidden_field_tag 'product_id', @product.id %>
+			<%= submit_tag 'Change Picture' %>
+		<% end %>
+	</p>
+<% else %>
+	<p> <%= image_tag(@product.photo, height:150, width:150) %> </p>
+<% end %>
+
+<% if @product.user != current_user %>
+<% already_added = false %>
+<% if session[:cart] != nil %>
+<% session[:cart].each do |item| %>
+<% if item['id'] == @product.id %>
+<% already_added = true %>
+<% end %>
+<% end %>
+<% end %>
+<% if !already_added %>
 <p> <%= link_to('Add to Cart', add_to_cart_path(@product.id)) %> </p>
+<% end %>
+<% end %>
+<% if @product.user == current_user %>
+<p> <%= link_to('Update Product Information', edit_product_path) %> </p>
+<% end %>
 <p> <%= link_to('Back to Products', root_path) %> </p>
+<% if current_user == @product.user %>
+<p> <%= link_to('Remove Product', product_path(@product.id), method: :delete) %> </p>
+<% end %>

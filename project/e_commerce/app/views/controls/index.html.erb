@@ -12,7 +12,11 @@
 	</style>
 </head>
 <body>
-	<h1>Welcome!</h1>
+	<% if current_user %>
+	<h1>Welcome <%= current_user.name %>!</h1>
+	<% else %>
+	<h1>Hey there, stranger!</h1>
+	<% end %>
 	<% if !current_user %>
 	<%= link_to('Create Account', new_user_path) %>
 	<%= link_to('Log In', logging_in_path) %>
@@ -23,7 +27,6 @@
 	<% end %>
 	<ul style="display: inline-block; vertical-align: top;">
 		<% @products.each do |p| %>
-		<!-- <button style="height: 300px; width: 312px; display: inline;margin-top: 50px"> -->
 			<li style="display: inline; height: 200px;">
 				<ul style="list-style: none; display: inline-block; width:150px;">
 					<div style="display: inline-block; height:100px;">
@@ -51,7 +54,6 @@
 					<%= image_tag(p.photo, height:150, width:150) %>
 				</div>
 			</li>
-			<!-- </button> -->
 		<% end %>
 	</ul>
 </body>
