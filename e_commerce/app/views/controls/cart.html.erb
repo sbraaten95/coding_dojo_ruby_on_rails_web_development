@@ -1,0 +1,23 @@
+<h1>My Cart</h1>
+<p> <%= link_to('Back to Products', root_path) %> </p>
+<% if session[:cart] != nil %>
+<p> <%= link_to('Check Out', check_out_path) %> </p>
+<% end %>
+<% total = 0 %>
+<ul style="list-style: none;">
+<% if session[:cart] != nil %>
+<% session[:cart].each do |p| %>
+<% @product = Product.find(p['id']) %>
+<% total += @product.price / 100 %>
+<li>
+<p> <%= @product.name %> </p>
+<p> <%= @product.desc %> </p>
+<p> $<%= number_with_precision(@product.price / 100, :precision => 2, :delimiter => ',') %> </p>
+<p> <%= @product.user.name %> </p>
+<p> <%= image_tag(@product.photo, height:150, width:150) %></p>
+
+</li>
+<% end %>
+<% end %>
+</ul>
+<h3>Total: $<%= number_with_precision(total, :precision => 2, :delimiter => ',') %></h3>
